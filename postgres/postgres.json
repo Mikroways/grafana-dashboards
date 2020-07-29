@@ -117,7 +117,7 @@
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{instance}},{{datname}},state : {{state}}",
+              "legendFormat": "{{pod}},{{datname}},state : {{state}}",
               "refId": "A",
               "step": 2
             }
