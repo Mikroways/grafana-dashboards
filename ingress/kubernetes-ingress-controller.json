@@ -33,7 +33,7 @@
   "editable": true,
   "gnetId": 12575,
   "graphTooltip": 0,
-  "iteration": 1597162465980,
+  "iteration": 1597163097163,
   "links": [],
   "panels": [
     {
@@ -1278,8 +1278,8 @@
         "current": {
           "selected": false,
           "tags": [],
-          "text": "Prometheus",
-          "value": "Prometheus"
+          "text": "default",
+          "value": "default"
         },
         "hide": 0,
         "includeAll": false,
@@ -1390,7 +1390,7 @@
         "multi": false,
         "name": "ingress",
         "options": [],
-        "query": "",
+        "query": "label_values(nginx_ingress_controller_requests{namespace=~\"$namespace\",service=~\"$controller_class\",pod=~\"$controller\"}, ingress) ",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
