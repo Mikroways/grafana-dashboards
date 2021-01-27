@@ -54,7 +54,7 @@
   "gnetId": 3742,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1602074979733,
+  "iteration": 1611783757605,
   "links": [],
   "panels": [
     {
@@ -76,7 +76,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -172,7 +172,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -270,7 +270,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -386,7 +386,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -473,7 +473,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -560,7 +560,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "format": "decbytes",
       "gauge": {
         "maxValue": 100,
@@ -643,7 +643,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -738,7 +738,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -833,7 +833,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -928,7 +928,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1023,7 +1023,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$source",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1123,9 +1123,28 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "tags": [],
+          "text": "group-production-1",
+          "value": "group-production-1"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "source",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "/group-production-*/",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "$source",
         "definition": "label_values({datname=~\".+\"}, pod)",
         "hide": 0,
         "includeAll": true,
@@ -1148,7 +1167,7 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "$source",
         "definition": "label_values({datname=~\".+\", pod=~\"$pod\"}, datname)",
         "hide": 0,
         "includeAll": true,
@@ -1171,8 +1190,8 @@
       {
         "allValue": null,
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
-        "definition": "",
+        "datasource": "$source",
+        "definition": "label_values({mode=~\"accessexclusivelock|accesssharelock|exclusivelock|rowexclusivelock|rowsharelock|sharelock|sharerowexclusivelock|shareupdateexclusivelock\"}, mode)",
         "hide": 0,
         "includeAll": true,
         "index": -1,
