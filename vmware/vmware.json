@@ -615,7 +615,7 @@
               "interval": "",
               "intervalFactor": 1,
               "legendFormat": "{{ vm_name }}",
-              "refId": "D"
+              "refId": "A"
             }
           ],
           "thresholds": [],
