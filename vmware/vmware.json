@@ -62,7 +62,7 @@
   "gnetId": 10076,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1612174783110,
+  "iteration": 1612176329453,
   "links": [],
   "panels": [
     {
@@ -85,7 +85,7 @@
             "rgba(237, 129, 40, 0.89)",
             "#d44a3a"
           ],
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "$datasource",
           "format": "s",
           "gauge": {
             "maxValue": 100,
@@ -192,7 +192,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$datasource",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -288,7 +288,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "$datasource",
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -374,7 +374,7 @@
       "panels": [
         {
           "cacheTimeout": null,
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "$datasource",
           "gridPos": {
             "h": 4,
             "w": 24,
@@ -429,7 +429,6 @@
           "repeatDirection": "h",
           "scopedVars": {
             "datastore": {
-              "$$hashKey": "object:198",
               "selected": true,
               "text": "DGCEvms-DS01",
               "value": "DGCEvms-DS01"
@@ -508,7 +507,6 @@
           "repeatDirection": "h",
           "scopedVars": {
             "datastore": {
-              "$$hashKey": "object:198",
               "selected": true,
               "text": "DGCEvms-DS01",
               "value": "DGCEvms-DS01"
@@ -567,7 +565,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "$datasource",
           "decimals": null,
           "fill": 0,
           "fillGradient": 0,
@@ -575,7 +573,7 @@
             "h": 10,
             "w": 24,
             "x": 0,
-            "y": 5
+            "y": 15
           },
           "hiddenSeries": false,
           "id": 8,
@@ -615,7 +613,7 @@
               "interval": "",
               "intervalFactor": 1,
               "legendFormat": "{{ vm_name }}",
-              "refId": "A"
+              "refId": "D"
             }
           ],
           "thresholds": [],
@@ -673,7 +671,7 @@
             "h": 10,
             "w": 24,
             "x": 0,
-            "y": 15
+            "y": 25
           },
           "hiddenSeries": false,
           "id": 17,
@@ -772,7 +770,6 @@
       {
         "current": {
           "selected": false,
-          "tags": [],
           "text": "Prometheus",
           "value": "Prometheus"
         },
@@ -872,5 +869,5 @@
   "variables": {
     "list": []
   },
-  "version": 4
+  "version": 5
 }
