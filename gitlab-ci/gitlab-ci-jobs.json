@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": 13328,
   "graphTooltip": 0,
-  "id": 35,
-  "iteration": 1644609025254,
+  "id": 3,
+  "iteration": 1645450256941,
   "links": [],
   "panels": [
     {
@@ -123,6 +123,7 @@
     {
       "cacheTimeout": null,
       "datasource": "Prometheus",
+      "description": "Displays the number of failed jobs on the selected time interval.",
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -190,23 +191,23 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "count(gitlab_ci_pipeline_job_status{status=\"failed\", project=~\"$PROJECT\", ref=~\"$REF\", job_name=~\"$JOB\"} > 0) or vector(0)",
-          "format": "time_series",
-          "instant": false,
+          "exemplar": true,
+          "expr": "# Tomamos los jobs fallidos en este instante y los contrastamos con los que habia \n# hace N segundos(dado por la variable $__range), quedandonos unicamente con aquellos que son nuevos. \n\n(\ncount(\n  gitlab_ci_pipeline_job_status{status=\"failed\", project=~\"$PROJECT\", ref=~\"$REF\", job_name=~\"$JOB\"}\n  unless\n  gitlab_ci_pipeline_job_status{status=\"failed\", project=~\"$PROJECT\", ref=~\"$REF\", job_name=~\"$JOB\"} offset ${__range}\n  ) > 0 \n) or vector(0)\n  ",
+          "hide": false,
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
+          "legendFormat": "Failed jobs amount",
+          "refId": "C"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "FAILED JOBS #",
+      "title": "FAILED JOBS # (on the selected interval)",
       "type": "stat"
     },
     {
       "cacheTimeout": null,
       "datasource": "Prometheus",
+      "description": "Display the number of job runs on the selected time interval",
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -271,18 +272,16 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(increase(gitlab_ci_pipeline_job_run_count{project=~\"$PROJECT\", ref=~\"$REF\", job_name=~\"$JOB\"}[$__range]))",
-          "format": "time_series",
-          "instant": false,
+          "expr": "# Calculamos la cantidad total de jobs corridos hasta el momento y le restamos\n# la cantidad de jobs corridos hace N segundos(dada por la variable $__range)\n# quedandonos por resultado la cantidad de jobs corridos en el intervalo.\n(\n  sum(\n    gitlab_ci_pipeline_job_run_count{project=~\"$PROJECT\", ref=~\"$REF\", job_name=~\"$JOB\"}\n  ) > 0 \n  or vector(0)\n)\n-\n(\n  sum(\n    gitlab_ci_pipeline_job_run_count{project=~\"$PROJECT\", ref=~\"$REF\", job_name=~\"$JOB\"} offset ${__range}\n  ) > 0\n  or vector(0)\n)",
+          "hide": false,
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
+          "legendFormat": "Job runs amount",
+          "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "RUNS # (in the selected interval)",
+      "title": "RUNS # (on the selected interval)",
       "type": "stat"
     },
     {
@@ -1162,7 +1161,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 98
+                "value": null
               }
             ]
           },
@@ -1474,7 +1473,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -1504,5 +1503,5 @@
   "timezone": "",
   "title": "GitLab CI jobs",
   "uid": "nuL90sank",
-  "version": 3
+  "version": 1
 }
