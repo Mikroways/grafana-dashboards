@@ -120,7 +120,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.90, sum by (action,le) (rate(easycommerce_request_durations_histogram_seconds_bucket{action!~\"all|GET-app_metrics\",namespace=\"$namespace\"}[$__range])))",
@@ -133,7 +133,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "exemplar": false,
           "expr": "histogram_quantile(0.95, sum by (action,le) (rate(easycommerce_request_durations_histogram_seconds_bucket{action!~\"all|GET-app_metrics\",namespace=\"$namespace\"}[$__range])))",
@@ -147,7 +147,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "exemplar": false,
           "expr": "histogram_quantile(0.99, sum by (action,le) (rate(easycommerce_request_durations_histogram_seconds_bucket{action!~\"all|GET-app_metrics\",namespace=\"$namespace\"}[$__range])))",
@@ -342,7 +342,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "exemplar": true,
           "expr": "sum(easycommerce_http_2xx_responses_total{action!~\"all|GET-app_metrics\",namespace=\"$namespace\"}) by (action)",
@@ -355,7 +355,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "exemplar": false,
           "expr": "sum(easycommerce_http_3xx_responses_total{action!~\"all|GET-app_metrics\",namespace=\"$namespace\"}) by (action)",
@@ -369,7 +369,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "exemplar": true,
           "expr": "sum(easycommerce_http_4xx_responses_total{action!~\"all|GET-app_metrics\",namespace=\"$namespace\"}) by (action)",
@@ -382,7 +382,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "Prometheus"
           },
           "exemplar": true,
           "expr": "sum(easycommerce_http_5xx_responses_total{action!~\"all|GET-app_metrics\",namespace=\"$namespace\"}) by (action)",
@@ -464,7 +464,7 @@
     "list": [
       {
         "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "datasource": "Prometheus",
         "definition": "label_values(kube_pod_info, namespace)",
         "description": "Namespace",
         "hide": 0,
@@ -477,7 +477,7 @@
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "",
+        "regex": "/.*-prod|.*-test/",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
